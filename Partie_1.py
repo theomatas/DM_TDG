@@ -45,6 +45,14 @@ def mini_parse(text):
     N.append(int(i))
   return N
 
+def creat_matrix(n,lst):
+  M = []
+  print(lst)
+  for i in range(n):
+    M.append([None]*n)
+  for i in lst:
+    M[i[0]][i[1]] = i[2]
+  return M
 
 
 
@@ -52,6 +60,8 @@ def mini_parse(text):
 class Graph:
   def __init__(self,filename):
     self.brut = parse(my_open(filename))
+    self.matrix = creat_matrix(self.brut[0],self.brut[2:])
+    print (self.matrix )
 
   
 
