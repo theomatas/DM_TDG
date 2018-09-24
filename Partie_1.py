@@ -1,19 +1,19 @@
-import matrix
+import matrix_2
 
   
 
-A = matrix.Graph("tests.txt")
-print ("exo 1: text parser", A.get_brut() )
+A = matrix_2.Graph("tests.txt")
+print ("exo 1: text parser " + str(A.get_brut()) )
 
-print ("exo 2: matrice", A.get_matrix() )
+print ("exo 2: matrice " + str(A.get_matrix()) )
 
-print ("exo 3: cycle =", A.cycle() )
+print ("exo 3: cycle = " + str(A.cycle()) )
 
-print()
+print(" ")
 
-B = matrix.Graph("t.txt")
-print ("exo 1: text parser", A.get_brut() )
+B = matrix_2.Graph("t.txt")
+print ("exo 1: text parser " + str(B.get_brut()) )
 
-print ("exo 2: matrice", A.get_matrix() )
+print ("exo 2: matrice " + str(B.get_matrix()) )
 
-print ("exo 3: cycle =", A.cycle() )
+print ("exo 3: cycle = " + str(B.cycle()) )
