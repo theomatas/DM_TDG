@@ -13,7 +13,7 @@ def my_write(filename,text):
   return 1
 
 def parse(text):
-  M = cut(text,'\n')
+  M = text.split('\n')
   x = 0
   while x < len(M):
     if x < 2:
@@ -23,21 +23,8 @@ def parse(text):
     x += 1
   return M 
 
-def cut(text,car):
-  M = []
-  s = ""
-  for i in text:
-    if i == car:
-      M.append(s)
-      s = ""
-    else:
-      s += i
-  M.append(s)
-  return M
-
 def mini_parse(text):
-  
-  M = cut(text,' ')
+  M = text.split(' ')
   N = []
   for i in M:
 
@@ -66,11 +53,11 @@ def move_cycle(M,start,end):
 
 def move_rang(M,start,val,rangs):
   x = 0
-  if rangs[start] > val:
+  if rangs[start] < val:
     rangs[start] = val
   for i in M[start]:
     if i != None:
-      rangs = move_rang(M,x,val + M[start][x],rangs)
+      rangs = move_rang(M,x,val + 1,rangs)
     x += 1
   return rangs
 
@@ -87,7 +74,7 @@ def move_early(M,start,val,rangs):
 def move_late(M,start,val,rangs):
   x = 0
   m = len(M)
-  if rangs[start] < val:
+  if rangs[start] > val:
     rangs[start] = val
   while x < m:
     if M[x][start] != None:
@@ -159,7 +146,14 @@ def copy(M):
     N.append(i)
   return N
 
-
+def maxi(L):
+  x = None
+  for i in L:
+    if i != None and x == None:
+      x = i
+    if i != None and x < i :
+      x = i
+  return x
     
 class Graph:
   def __init__(self,filename):
@@ -180,7 +174,7 @@ class Graph:
       return False
     M = self.matrix
     m = self.brut[0]
-    rangs = [1000]*m
+    rangs = [0]*m
     in_ = in_out(M)[0]
     x = 0
     for i in in_:
@@ -203,6 +197,7 @@ class Graph:
     if not check_incident(M):
       return False , "incident arc value not equal" 
     return True
+
   def trajet_early(self):
     M = self.matrix
     m = self.brut[0]
@@ -214,9 +209,12 @@ class Graph:
         early = move_early(M,x,0,early)
         x += 1
     return early  
-  def trajet_late(self,late):
+  def trajet_late(self,early):
     M = self.matrix
     m = self.brut[0]
+    late = []
+    for i in early:
+      late.append(i)
     out_ = in_out(M)[1]
     x = 0
     for i in out_:
@@ -228,7 +226,7 @@ class Graph:
     M = self.matrix
     N = []
     for i in M:
-      N.append(max(i))
+      N.append(maxi(i))
     return N
   def trajet(self):
     if self.ordonnance() != True:
@@ -240,11 +238,5 @@ class Graph:
     for i in range(len(self.matrix)):
       e = early[i]
       l = late[i]
-      t = tache[i]
-      if t != None:
-        marge.append(l-e-t)
-      else:
-        marge.append(0)
-        
-    
+      marge.append(l-e)
     return " early = " + str(early) + " late = " + str(late) + " marge = " + str(marge)
