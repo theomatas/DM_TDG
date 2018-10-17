@@ -1,31 +1,71 @@
 import matrix_2
+import os
+import os.path
 
-  
+try: 
+    from Tkinter import *
+    print ("interface importe")
+    interface = True
+except:
+    print ("interface non disponible")
+ 
+def loader():   
+    path= os.path.dirname(__file__) + "//graph"
+    way = os.listdir(path)
+    Matrix = []
+    for  i in way:
+        file_ = path + "//" + i 
+        try:
+            A = matrix_2.Graph(file_)
+            print (i , "charge")
+            Matrix.append([i,A])
+        except:
+            print (i , "non charge")
+    print ("__________________")
+    return Matrix
 
-A = matrix_2.Graph("tests.txt")
-print ("exo 1: text parser " + str(A.get_brut()) )
+def select_file(Matrix):
+    print (" ")
+    for i in Matrix:
+        print (Matrix.index(i) + 1, "/" , len(Matrix) , i[0])
+    print ("entrer le numero du fichier")
+    IN = input()
+    if IN == "sortir":
+        return None
+    if IN == "charger":
+        return 0
+    try:
+        if int(IN):
+            return int(IN)
+    except:
+        return -1
+    return -1
 
-print ("exo 2: matrice " + str(A.get_matrix()) )
+def main():
+    Matrix = loader()
+    File = select_file(Matrix)
+    while File != None:
+        if 0 < File <= len(Matrix):
+            exo(Matrix[File - 1][1])        
+        if not File:
+            Matrix = loader()
+        File = select_file(Matrix)
 
-print ("exo 3: cycle = " + str(A.cycle()) )
-
-print ("exo 4: rang = " + str(A.rang()) )
-
-print ("exo 5: rang = " + str(A.ordonnance()) )
-
-print ("exo 6: trajet " + str(A.trajet()) )
-
-print(" ")
-
-B = matrix_2.Graph("t.txt")
-print ("exo 1: text parser " + str(B.get_brut()) )
-
-print ("exo 2: matrice " + str(B.get_matrix()) )
-
-print ("exo 3: cycle = " + str(B.cycle()) )
-
-print ("exo 4: rang = " + str(B.rang()) )
-
-print ("exo 5: rang = " + str(B.ordonnance()) )
-
-print ("exo 6: trajet " + str(B.trajet()) )
+    print ("fin du programme")
+    
+def exo(obj):
+    
+    print ("exo 1: text parser " + str(obj.get_brut()) )
+    input()
+    print ("exo 2: matrice " + str(obj.get_matrix()) )
+    input()
+    print ("exo 3: cycle = " + str(obj.cycle()) )
+    input()
+    print ("exo 4: rang = " + str(obj.rang()) )
+    input()
+    print ("exo 5: rang = " + str(obj.ordonnance()) )
+    input()
+    print ("exo 6: trajet " + str(obj.trajet()) )    
+    
+    
+main() 
