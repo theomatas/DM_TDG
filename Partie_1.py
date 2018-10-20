@@ -1,9 +1,12 @@
-import matrix_2
+import lib.matrix_2
 import os
 import os.path
 
+X,Y = 0,0
+interface = False
+
 try: 
-    from Tkinter import *
+    from tkinter import *  
     print ("interface importe")
     interface = True
 except:
@@ -16,7 +19,7 @@ def loader():
     for  i in way:
         file_ = path + "//" + i 
         try:
-            A = matrix_2.Graph(file_)
+            A = lib.matrix_2.Graph(file_)
             print (i , "charge")
             Matrix.append([i,A])
         except:
@@ -54,18 +57,33 @@ def main():
     print ("fin du programme")
     
 def exo(obj):
-    
-    print ("exo 1: text parser " + str(obj.get_brut()) )
-    input()
-    print ("exo 2: matrice " + str(obj.get_matrix()) )
-    input()
-    print ("exo 3: cycle = " + str(obj.cycle()) )
-    input()
-    print ("exo 4: rang = " + str(obj.rang()) )
-    input()
-    print ("exo 5: rang = " + str(obj.ordonnance()) )
-    input()
-    print ("exo 6: trajet " + str(obj.trajet()) )    
-    
+    if interface and user():      
+        from lib.interface import afs
+        fen = Tk()
+        canvas = Canvas(fen, width=1000, height=1000,bg="black")
+        A = afs(obj,canvas,fen)
+        A.run()
+        canvas.pack()
+        fen.mainloop()             
+    else: 
+        print ("exo 1: text parser " + str(obj.get_brut()) )
+        input()
+        print ("exo 2: matrice " + str(obj.get_matrix()) )
+        input()
+        print ("exo 3: cycle = " + str(obj.cycle()) )
+        input()
+        print ("exo 4: rang = " + str(obj.rang()) )
+        input()
+        print ("exo 5: rang = " + str(obj.ordonnance()) )
+        input()
+        print ("exo 6: trajet " + str(obj.trajet()) )  
+        
+def user():
+    try:
+        return int(input("interface" + '\n' + "1 - oui" + '\n' + "2 - non" + '\n' )) == 1
+    except:
+        return False
     
 main() 
+
+    
