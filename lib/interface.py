@@ -10,13 +10,13 @@ class afs():
         but = UberButton(canvas)
         self.script =  UberScript(canvas,(10,10,500,100),'gray')   
         self.script.ad("graph initialiser","blue")
-        name = ["number","rang","date tot","date tard","marge"]
+        name = ["number","rang","date tot","date tard","marge","marge min"]
         self.name = name
         x = 0
         Y = 950
         X = 100
         while x < len(name):
-            but.add_fct((X + 150*x,Y),name[x],"green")
+            but.add_fct((X + 150*x,Y),name[x],"blue","white")
             x += 1
         
         self.button = but
@@ -33,7 +33,7 @@ class afs():
                 M.append([])
             for i in self.rang[0]:
                 x,y = i*1000/(self.rang[1]+1) + 50 ,len(M[i])*1000/(self.rang[1]+1) + 200 + 200 * (i%3)
-                M[i].append([x,y,canvas.create_oval(x-30,y-30,x+30,y+30,fill = 'blue'),[]])
+                M[i].append([x,y])
                 N.append([x,y,canvas.create_oval(x-30,y-30,x+30,y+30,fill = 'blue'),[]])
             self.place = N
             self.matrix = obj.get_matrix()
@@ -43,7 +43,8 @@ class afs():
                 for ind in self.matrix[i]:
                     if ind != None:
                         x1,y1,x2,y2 = N[i][0] + 30,N[i][1],N[y][0] - 30,N[y][1]
-                        line = canvas.create_line(x1,y1,x2,y2, fill="white",arrow=LAST,arrowshape=(4,4,4))
+                        line = canvas.create_line(x1,y1,x2,y2, fill="red",arrow=LAST,arrowshape=(4,4,4),width = 2)
+                        canvas.create_text((x1+x2*3)/4,(y1+y2*3)/4,text = str(ind),font="Times 20 bold",fill = "blue")
                         #canvas.lower(line)
                         N[i][-1].append([x1,y1,x2,y2,line])
                     y += 1
@@ -74,7 +75,7 @@ class afs():
                 x = 0
     
                 for i in self.place:
-                    txt.append(self.can.create_text(i[0],i[1],text = str(line[x]),font="Times 20 italic bold",fill = "red"))
+                    txt.append(self.can.create_text(i[0],i[1],text = str(line[x]),font="Times 20 italic bold",fill = "white"))
                     x += 1
                 self.txt = txt
             except:

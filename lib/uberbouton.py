@@ -1,11 +1,11 @@
 # creat_button
 
 class Button():
-    def __init__(self,canvas,pos,name,color):
+    def __init__(self,canvas,pos,name,color,color_txt):
         self.name = name
         self.pos = pos[0] , pos[1]
         self.rect = canvas.create_rectangle(self.pos[0] - 50,self.pos[1] - 15,self.pos[0] + 50,self.pos[1] + 15,fill=color,width = 0)
-        self.text = canvas.create_text(self.pos[0],self.pos[1],text=name, font="10", fill="red")
+        self.text = canvas.create_text(self.pos[0],self.pos[1],text=name, font="10", fill=color_txt)
         self.can = canvas
     def act (self,X,Y):
         if abs( X - self.pos[0] ) < 40 and abs( Y - self.pos[1] ) < 10:
@@ -33,9 +33,9 @@ class UberButton():
                 #i.destroy()
                 return fct
         return 0
-    def add_fct(self,pos,name,color):
+    def add_fct(self,pos,name,color,color_txt):
         lst = self.lst
-        lst.append(Button(self.canvas,pos,name,color))
+        lst.append(Button(self.canvas,pos,name,color,color_txt))
         return 0
     def __del__(self):
         return "UBERBUTTON DESTROYED"

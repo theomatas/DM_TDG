@@ -234,15 +234,35 @@ class Graph:
     for i in M:
       N.append(maxi(i))
     return N
+  def marge_min(self,early,arc):
+    Mat = self.matrix
+    m = self.brut[0]
+    M = []
+    n = 0
+    for i in Mat:
+      x = 0
+      N = []
+      for j in i:
+        if j != None:
+          N.append(early[x])
+        x += 1
+      if N!= []:
+        M.append(min(N) - early[n] - arc[n])
+      else:
+        M.append(0)
+      n += 1
+    return M
+          
   def trajet(self):
     if self.ordonnance() != True:
       return False    
     early = self.trajet_early()
     late = self.trajet_late(copy(early))
     tache = self.tache()
+    marge_min = self.marge_min(early,tache)
     marge = []
     for i in range(len(self.matrix)):
       e = early[i]
       l = late[i]
       marge.append(l-e)
-    return [early,late,marge]
+    return [early,late,marge,marge_min]

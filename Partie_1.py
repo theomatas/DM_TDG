@@ -55,28 +55,57 @@ def main():
         File = select_file(Matrix)
 
     print ("fin du programme")
+
+def print_matrix(M):
+    N = []
+    for i in M:
+        N.append(lib.matrix_2.maxi(i))
+    m = len(str(lib.matrix_2.maxi(N)))
+    for i in M:
+        for j in i:
+            if j == None:
+                j = 'X'
+
+            print((m - len(str(j))) *  ' ' + str(j),end =" ") 
+        print()
     
 def exo(obj):
     if interface and user():      
         from lib.interface import afs
         fen = Tk()
-        canvas = Canvas(fen, width=1000, height=1000,bg="black")
+        canvas = Canvas(fen, width=1000, height=1000,bg="white")
         A = afs(obj,canvas,fen)
         A.run()
         canvas.pack()
         fen.mainloop()             
     else: 
-        print ("exo 1: text parser " + str(obj.get_brut()) )
+        print ("exo 1: text parser " )
+        for i in obj.get_brut():
+            try:
+                print(str(i[0]) + " -> " + str(i[1]) + " = " + str(i[2]))
+            except:
+                print(i)
+            
         input()
-        print ("exo 2: matrice " + str(obj.get_matrix()) )
+        print ("exo 2: matrice ")
+        print_matrix(obj.get_matrix())
         input()
         print ("exo 3: cycle = " + str(obj.cycle()) )
         input()
         print ("exo 4: rang = " + str(obj.rang()) )
         input()
-        print ("exo 5: rang = " + str(obj.ordonnance()) )
+        print ("exo 5: ordonnance = " + str(obj.ordonnance()) )
         input()
-        print ("exo 6: trajet " + str(obj.trajet()) )  
+        print ("exo 6: trajet ")  
+        try:
+            x = 0
+            
+            for i in obj.trajet():
+                print(["date tot","date tard","marge","marge min"][x] , " = " , i)
+                x += 1
+        except:
+            print("non disponible")
+                
         
 def user():
     try:
