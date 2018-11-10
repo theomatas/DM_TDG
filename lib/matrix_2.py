@@ -1,42 +1,33 @@
 def my_open(filename):
 
-  path = filename
-  days_file = open(path,'r')
-  days = days_file.read()
-  return (days)
+  file = open(filename,'r')
+  text = file.read()
+  return (text)
 
-def my_write(filename,text):
-
-  path = filename
-  days_file = open(path,'w')
-  days_file.write(text)
-  return 1
-
-def parse(text):
-  M = text.split('\n')
+def parse(text):            #retourner un tableau dont le premier element et le nombre de sommets et le deuxieme le nombre d'arcs suivit par les arcs eux même 
+  M = text.split('\n')       #separation du text par retour a la ligne
   x = 0
   while x < len(M):
     if x < 2:
       M[x] = int(M[x])
     else:
-      M[x] = mini_parse(M[x])
+      M[x] = mini_parse(M[x])     #on appelle mini_parse sur chaque ligne de valeur d'arc
     x += 1
   return M 
 
-def mini_parse(text):
-  M = text.split(' ')
+def mini_parse(text):     #retourner un tableau [sommet de depart,sommet d'arriver, valeur arc]
+  M = text.split(' ')       #separation du text par des espaces
   N = []
   for i in M:
-
     N.append(int(i))
   return N
 
-def creat_matrix(n,lst):
+def creat_matrix(n,lst):   #retourner un tableau carre de taille sommet*sommet (matrice de valeur d'arc)
   M = []
   for i in range(n):
-    M.append([None]*n)
-  for i in lst:
-    M[i[0]][i[1]] = i[2]
+    M.append([None]*n)    #remplir avec des "None" toute la matrice
+  for i in lst:             #iterer toute les valeurs d'arc
+    M[i[0]][i[1]] = i[2]      #on complete la matrice selon: sommet de depart = ligne, sommet d'arriver = colonne, valeur d'arc = valeur cette position de la matrice
   return M
 
 def move_cycle(M,start,end):
@@ -171,8 +162,8 @@ def positif(M):
       
 class Graph:
   def __init__(self,filename):
-    self.brut = parse(my_open(filename))
-    self.matrix = creat_matrix(self.brut[0],self.brut[2:])
+    self.brut = parse(my_open(filename))    #recuperation du text parse
+    self.matrix = creat_matrix(self.brut[0],self.brut[2:]) #retourne la matrice de valeur d'arc
   def get_matrix(self):
     return self.matrix
   def get_brut(self):
