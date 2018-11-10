@@ -155,6 +155,13 @@ def maxi(L):
       x = i
   return x
     
+def maxi_lst(L):
+  M = []
+  for i in L:
+    M.append(maxi(i))
+  return maxi(M)
+    
+    
 def positif(M):
   for i in M:
     for j in i:
@@ -210,8 +217,7 @@ class Graph:
     early = [0]*m
     in_ = in_out(M)[0]
     x = 0
-    for i in in_:
-      if i == 1:
+    for i in early:
         early = move_early(M,x,0,early)
         x += 1
     return early  
@@ -265,4 +271,5 @@ class Graph:
       e = early[i]
       l = late[i]
       marge.append(l-e)
+      
     return [early,late,marge,marge_min]

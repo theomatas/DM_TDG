@@ -22,8 +22,8 @@ def loader():
             A = lib.matrix_2.Graph(file_)
             print (i , "charge")
             Matrix.append([i,A])
-        except:
-            print (i , "non charge")
+        except Exception as e:
+            print (i , "non charge: " + str(e))
     print ("__________________")
     return Matrix
 
@@ -32,6 +32,7 @@ def select_file(Matrix):
     for i in Matrix:
         print (Matrix.index(i) + 1, "/" , len(Matrix) , i[0])
     print ("entrer le numero du fichier")
+    print("quiter pour sortir et charger pour reload les fichier")
     IN = input()
     if IN == "sortir":
         return None
@@ -58,15 +59,22 @@ def main():
 
 def print_matrix(M):
     N = []
+    m = len(str(lib.matrix_2.maxi_lst(M)))
+    ml = len(str(len(M)))
+    m = max([m,ml])
+    print(' '*m ,end ="  ")
+    for i in range(len(M)):
+        print( (m - len(str(i)) + 1) *  ' ' + str(i) ,end =" ")
+    print()
+    x = 0
     for i in M:
-        N.append(lib.matrix_2.maxi(i))
-    m = len(str(lib.matrix_2.maxi(N)))
-    for i in M:
+        print( str(x) + (m - len(str(x)) + 1) *  ' ' ,end =" ")
         for j in i:
+            
             if j == None:
                 j = 'X'
-
-            print((m - len(str(j))) *  ' ' + str(j),end =" ") 
+            print((m - len(str(j)) + 1) *  ' ' + str(j),end =" ") 
+        x += 1
         print()
     
 def exo(obj):
