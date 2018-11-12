@@ -1,0 +1,73 @@
+graph1:
+10
+18
+0 1 0
+0 2 0
+1 2 2
+1 4 2
+1 5 2
+2 3 3
+2 4 3
+2 8 3
+3 7 5
+3 9 5
+4 5 6
+4 6 6
+4 8 6
+5 6 2
+5 7 2
+6 4 6
+7 8 6
+8 9 1
+
+entrer le numero du fichier
+sortir pour quitter et charger pour reload les fichier
+3
+interface
+1 - oui
+2 - non
+
+exo 1: text parser 
+10 sommets
+18 arcs
+0 -> 1 = 0
+0 -> 2 = 0
+1 -> 2 = 2
+1 -> 4 = 2
+1 -> 5 = 2
+2 -> 3 = 3
+2 -> 4 = 3
+2 -> 8 = 3
+3 -> 7 = 5
+3 -> 9 = 5
+4 -> 5 = 6
+4 -> 6 = 6
+4 -> 8 = 6
+5 -> 6 = 2
+5 -> 7 = 2
+6 -> 4 = 6
+7 -> 8 = 6
+8 -> 9 = 1
+appuyer sur entrer pour continuer
+exo 2: matrice 
+     0  1  2  3  4  5  6  7  8  9
+0    X  0  0  X  X  X  X  X  X  X
+1    X  X  2  X  2  2  X  X  X  X
+2    X  X  X  3  3  X  X  X  3  X
+3    X  X  X  X  X  X  X  5  X  5
+4    X  X  X  X  X  6  6  X  6  X
+5    X  X  X  X  X  X  2  2  X  X
+6    X  X  X  X  6  X  X  X  X  X
+7    X  X  X  X  X  X  X  X  6  X
+8    X  X  X  X  X  X  X  X  X  1
+9    X  X  X  X  X  X  X  X  X  X
+appuyer sur entrer pour continuer
+exo 3: cycle = True
+appuyer sur entrer pour continuer
+exo 4: rang = False
+appuyer sur entrer pour continuer
+exo 5: ordonnance = (False, "c'est un cycle")
+appuyer sur entrer pour continuer
+exo 6: trajet 
+non disponible
+appuyer sur entrer pour continuer

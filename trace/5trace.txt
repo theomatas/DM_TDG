@@ -1,0 +1,78 @@
+graph5:
+12
+18
+0 4 0
+0 5 0
+0 6 0
+0 7 0
+0 10 0
+1 9 1
+2 9 2
+3 9 3
+4 1 4
+5 1 5
+5 8 5
+6 3 6
+7 2 7
+7 8 7
+8 9 8
+9 11 9
+10 1 10
+10 3 10
+
+entrer le numero du fichier
+sortir pour quitter et charger pour reload les fichier
+8
+interface
+1 - oui
+2 - non
+
+exo 1: text parser 
+12 sommets
+18 arcs
+0 -> 4 = 0
+0 -> 5 = 0
+0 -> 6 = 0
+0 -> 7 = 0
+0 -> 10 = 0
+1 -> 9 = 1
+2 -> 9 = 2
+3 -> 9 = 3
+4 -> 1 = 4
+5 -> 1 = 5
+5 -> 8 = 5
+6 -> 3 = 6
+7 -> 2 = 7
+7 -> 8 = 7
+8 -> 9 = 8
+9 -> 11 = 9
+10 -> 1 = 10
+10 -> 3 = 10
+appuyer sur entrer pour continuer
+exo 2: matrice 
+     0  1  2  3  4  5  6  7  8  9 10 11
+0    X  X  X  X  0  0  0  0  X  X  0  X
+1    X  X  X  X  X  X  X  X  X  1  X  X
+2    X  X  X  X  X  X  X  X  X  2  X  X
+3    X  X  X  X  X  X  X  X  X  3  X  X
+4    X  4  X  X  X  X  X  X  X  X  X  X
+5    X  5  X  X  X  X  X  X  5  X  X  X
+6    X  X  X  6  X  X  X  X  X  X  X  X
+7    X  X  7  X  X  X  X  X  7  X  X  X
+8    X  X  X  X  X  X  X  X  X  8  X  X
+9    X  X  X  X  X  X  X  X  X  X  X  9
+10   X 10  X 10  X  X  X  X  X  X  X  X
+11   X  X  X  X  X  X  X  X  X  X  X  X
+appuyer sur entrer pour continuer
+exo 3: cycle = False
+appuyer sur entrer pour continuer
+exo 4: rang = [0, 2, 2, 2, 1, 1, 1, 1, 2, 3, 1, 4]
+appuyer sur entrer pour continuer
+exo 5: ordonnance = True
+appuyer sur entrer pour continuer
+exo 6: trajet 
+date tot  =  [0, 10, 7, 10, 0, 0, 0, 0, 7, 15, 0, 24]
+date tard  =  [0, 14, 13, 12, 10, 2, 6, 0, 7, 15, 2, 24]
+marge  =  [0, 4, 6, 2, 10, 2, 6, 0, 0, 0, 2, 0]
+marge min  =  [0, 4, 6, 2, 6, 2, 4, 0, 0, 0, 0, 0]
+appuyer sur entrer pour continuer
