@@ -31,7 +31,7 @@ def mini_parse(text):
     N.append(int(i))
   return N
 
-def creat_matrix(n,lst):
+def create_matrix(n,lst):
   M = []
   for i in range(n):
     M.append([None]*n)
@@ -172,7 +172,7 @@ def positif(M):
 class Graph:
   def __init__(self,filename):
     self.brut = parse(my_open(filename))
-    self.matrix = creat_matrix(self.brut[0],self.brut[2:])
+    self.matrix = create_matrix(self.brut[0],self.brut[2:])
   def get_matrix(self):
     return self.matrix
   def get_brut(self):

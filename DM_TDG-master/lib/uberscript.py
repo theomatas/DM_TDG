@@ -5,14 +5,14 @@ class Script():
         self.pos = pos
         self.color = color
         self.ent = 0
-        self.creat()
-    def creat(self):
+        self.create()
+    def create(self):
         if not self.ent:
             self.ent = self.canvas.create_text(self.pos ,text= self.text, font="10", fill= self.color , anchor= 'w')
     def move(self,height):
         self.pos = [self.pos[0],height]
         self.destroy()
-        self.creat()
+        self.create()
     def destroy(self):
         if self.ent: 
             self.canvas.delete(self.ent)

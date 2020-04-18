@@ -1,4 +1,4 @@
-# creat_button
+# create_button
 
 class Button():
     def __init__(self,canvas,pos,name,color,color_txt):

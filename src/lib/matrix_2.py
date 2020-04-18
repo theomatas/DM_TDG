@@ -22,7 +22,7 @@ def mini_parse(text):     #retourner un tableau [sommet de depart,sommet d'arriv
     N.append(int(i))
   return N
 
-def creat_matrix(n,lst):   #retourner un tableau carre de taille sommet*sommet (matrice de valeur d'arc)
+def create_matrix(n,lst):   #retourner un tableau carre de taille sommet*sommet (matrice de valeur d'arc)
   M = []
   for i in range(n):
     M.append([None]*n)    #remplir avec des "None" toute la matrice
@@ -167,7 +167,7 @@ def positif(M):          # s'il y a une valeur d'arc negative dans la matrice d'
 class Graph:
   def __init__(self,filename):
     self.brut = parse(my_open(filename))    # recuperation du text parse
-    self.matrix = creat_matrix(self.brut[0],self.brut[2:]) # retourne la matrice de valeur d'arc
+    self.matrix = create_matrix(self.brut[0],self.brut[2:]) # retourne la matrice de valeur d'arc
   def get_matrix(self):
     return self.matrix
   def get_brut(self):
